@@ -7,12 +7,10 @@ serviceRouter.use(cors());
 serviceRouter.use(express.json());
 
 serviceRouter.post('/', async (req, res) => {
-
   const getToken = async () => {
-    const authUrl = 'https://auth.us-central1.gcp.commercetools.com';
-    const clientId = 'DVGTtKvMXFFfKkK0J2jZqcyL';
-    const clientSecret = 'K9STS56MdAq80JdxoIuKVUHo7IVgCgZG';
-
+    const authUrl = process.env.CTP_AUTH_URL;
+    const clientId = process.env.CTP_CLIENT_ID;
+    const clientSecret = process.env.CTP_CLIENT_SECRET;
     const bodyParams = new URLSearchParams();
     bodyParams.append('grant_type', 'client_credentials');
 
@@ -56,7 +54,7 @@ serviceRouter.post('/', async (req, res) => {
 
     if (response.status === 200) {
       const product = response.data;
-      let minOrderQuantity=1;
+      let minOrderQuantity = 1;
       let maxOrderQuantity = 10;
 
       if (product?.variants && product?.variants?.length > 0) {
