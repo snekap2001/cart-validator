@@ -7,7 +7,7 @@ deployAs:
       preUndeploy: npm install && npm run build && npm run connector:pre-undeploy
     configuration:
       standardConfiguration:
-        - key: us-central1
+        - key: us-central1.gcp
           description: commercetools Composable Commerce API region
       securedConfiguration:
         - key: changecx-demo
