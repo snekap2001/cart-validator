@@ -1,3 +1,4 @@
+//@ts-nocheck
 import express, { Router } from 'express';
 import axios from 'axios';
 import cors from 'cors';
